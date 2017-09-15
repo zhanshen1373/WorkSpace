@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:id="@+id/main8_linear"
+    tools:context="com.example.hd.myapplication.Main8Activity">
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="200dp">
+
+        <com.example.hd.myapplication.MyViewPager
+            android:id="@+id/main8_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </com.example.hd.myapplication.MyViewPager>
+
+        <com.example.hd.myapplication.ZiDingYiImageView
+            android:id="@+id/ImageView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_marginBottom="10dp"
+            android:layout_gravity="end|bottom"
+            android:src="@drawable/t"
+            />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/main8_button"
+        android:text="tanchu"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="bt"/>
+
+
+</LinearLayout>
