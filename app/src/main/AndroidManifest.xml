@@ -4,23 +4,52 @@
 
     <uses-permission android:name="android.permission.PACKAGE_USAGE_STATS" />
     <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
 
     <application
+        android:name="com.example.hd.MyAppliaction"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name="com.example.hd.Main30Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+
+
+
+        </activity>
+        <activity
+            android:name="com.example.hd.Main29Activity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:configChanges="orientation|keyboardHidden|screenSize"
+            android:screenOrientation="portrait"
+            >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.example.hd.Main28Activity">
+
+        </activity>
         <activity android:name=".MainActivity" />
         <activity android:name=".SecondActivity" />
-        <activity android:name=".Main2Activity"></activity>
+        <activity android:name=".Main2Activity" />
         <activity
             android:name=".Main3Activity"
             android:launchMode="singleTask" />
         <activity
             android:name=".Main4Activity"
-            android:windowSoftInputMode="adjustPan" />
+            android:windowSoftInputMode="adjustPan"></activity>
         <activity
             android:name=".Main5Activity"
             android:configChanges="screenSize|keyboardHidden|orientation"
@@ -33,15 +62,44 @@
             android:label="ActionBar"
             android:theme="@style/MyAppTheme" />
         <activity android:name=".Main8Activity" />
-        <activity android:name=".Main9Activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
-        <activity android:name=".Main10Activity">
+        <activity android:name=".Main9Activity" />
+        <activity android:name=".Main10Activity"></activity>
+        <activity android:name=".WorkerInitialPageActivity" />
+        <activity android:name=".Main11Activity" />
+        <activity android:name=".Main12Activity" />
+        <activity android:name=".Main13Activity" />
+        <activity android:name=".Main15Activity" />
+        <activity android:name=".Main16Activity" />
+        <activity android:name=".BaseActivity" />
+        <activity android:name=".Main17Activity" />
+        <activity android:name=".Main18Activity" />
+        <activity android:name=".Main19Activity" />
+        <activity android:name="com.example.hd.mhsearch.Main20Activity" />
 
-        </activity>
+        <service
+            android:name=".MyService"
+            android:enabled="true"
+            android:exported="true" />
+
+        <activity android:name=".Main21Activity" />
+        <activity android:name="com.example.hd.paintview.PaintActivity" />
+        <activity android:name="com.example.hd.thread.ThreadActivity" />
+        <activity android:name="com.example.hd.thread.AcceptActivity" />
+        <activity android:name="com.example.hd.aboutpaint.Main22Activity" />
+        <activity android:name="com.example.hd.scrolltextview.Main23Activity" />
+
+        <service
+            android:name="com.example.hd.aidl.MyService"
+            android:enabled="true"
+            android:exported="true"
+            android:process=":remote" />
+
+        <activity android:name="com.example.hd.aidl.SplashActivity" />
+        <activity android:name="com.example.hd.viewconflict.MainScrollActivity" />
+        <activity android:name="com.example.hd.ElasticView.Main14Activity" />
+        <activity android:name="com.example.hd.Main24Activity" />
+        <activity android:name="com.example.hd.Main25Activity" />
+        <activity android:name="com.example.hd.bottomnavigationview.Main27Activity" />
     </application>
 
 </manifest>
