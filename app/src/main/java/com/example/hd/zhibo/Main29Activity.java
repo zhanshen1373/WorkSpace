@@ -1,8 +1,10 @@
-package com.example.hd;
+package com.example.hd.zhibo;
 
 import android.animation.ObjectAnimator;
+import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.net.Uri;
@@ -18,7 +20,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
-import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -38,13 +39,12 @@ import java.util.ArrayList;
 
 import wseemann.media.FFmpegMediaMetadataRetriever;
 
-public class Main29Activity extends AppCompatActivity implements View.OnClickListener{
+public class Main29Activity extends AppCompatActivity implements View.OnClickListener {
 
     private SurfaceView surfaceView;
     private LibVLC mLibVLC = null;
     private MediaPlayer mMediaPlayer = null;
     private String mUrl = "http://ivi.bupt.edu.cn/hls/cctv1hd.m3u8";
-    private String UUrl="http://192.168.6.12:7001/maximo/webclient/hd/sdgl/hls/faa9233dc1814490aac5e89f9ab00449.m3u8";
     private IVLCVout vlcVout;
     private ZdyRelativeLayout syView;
     private int height;
@@ -69,6 +69,7 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case 0:
+
                     //隐藏掉条目
                     ObjectAnimator animator = ObjectAnimator.ofFloat(exitfullping_ll, "translationY", 0, -exitfullping_llheight);
                     animator.setDuration(2000);
@@ -83,7 +84,8 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
             super.handleMessage(msg);
         }
     };
-
+    private int statusBarHeight;
+    private ViewGroup.LayoutParams layoutParams;
 
 
     @Override
@@ -92,10 +94,14 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
 
 
         requestWindowFeature(Window.FEATURE_NO_TITLE);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+//        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+//                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        statusBarHeight = getStatusBarHeight(this);
 
         setContentView(R.layout.activity_main29);
+
+
+
 
         surfaceView = (SurfaceView) findViewById(R.id.camera_preview);
         syView = (ZdyRelativeLayout) findViewById(R.id.sy_view);
@@ -104,11 +110,11 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         exitfullping_iv = findViewById(R.id.exitfullping_iv);
         enterfullping_iv = findViewById(R.id.enterfullping_iv);
 //        maskTv=findViewById(R.id.masktv);
-        topleftTv=findViewById(R.id.topleft);
-        toprightTv=findViewById(R.id.topright);
-        bottomleftTv=findViewById(R.id.bottomleft);
-        bottomrightTv=findViewById(R.id.bottomright);
-        centerTv=findViewById(R.id.center);
+        topleftTv = findViewById(R.id.topleft);
+        toprightTv = findViewById(R.id.topright);
+        bottomleftTv = findViewById(R.id.bottomleft);
+        bottomrightTv = findViewById(R.id.bottomright);
+        centerTv = findViewById(R.id.center);
 //        rotateLinearlayout=findViewById(R.id.rotatelinear);
         preInit();
         init(surfaceView);
@@ -117,43 +123,22 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         hd.sendEmptyMessageDelayed(0, 2000);
 
 
-//        rotateLinearlayout.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
-//            @Override
-//            public void onGlobalLayout() {
-//                height = rotateLinearlayout.getHeight();
-//                width = rotateLinearlayout.getWidth();
-//                rotateLinearlayout.getViewTreeObserver().removeOnGlobalLayoutListener(this);
-//
-//                for (int ww=0;ww<7;ww++){
-//                    LinearLayout ho=new LinearLayout(Main29Activity.this);
-//                    ho.setOrientation(LinearLayout.HORIZONTAL);
-//                    ho.setLayoutParams(new LinearLayout.LayoutParams(width,height/7));
-//                    addTv(ho,ww);
-//                    rotateLinearlayout.addView(ho);
-//                }
-//
-//
-//            }
-//        });
-
-
-
         //加载视频第一帧
 //        Bitmap bitmap = getNetVideoBitmap(mUrl);
 //        qqqqimageview.setImageBitmap(bitmap);//对应的ImageView赋值图片
 
     }
 
-    private void addTv(LinearLayout li,int num){
-        if (num==2||num==4||num==5)
-            num=1;
-        if (num==3)
-            num=2;
-        if (num==6)
-            num=0;
-        for (int i=0;i<=num;i++){
-            TextView tv=new TextView(Main29Activity.this);
-            tv.setLayoutParams(new LinearLayout.LayoutParams(width/(num+1),LinearLayout.LayoutParams.MATCH_PARENT));
+    private void addTv(LinearLayout li, int num) {
+        if (num == 2 || num == 4 || num == 5)
+            num = 1;
+        if (num == 3)
+            num = 2;
+        if (num == 6)
+            num = 0;
+        for (int i = 0; i <= num; i++) {
+            TextView tv = new TextView(Main29Activity.this);
+            tv.setLayoutParams(new LinearLayout.LayoutParams(width / (num + 1), LinearLayout.LayoutParams.MATCH_PARENT));
             tv.setText("哈哈");
             tv.setGravity(Gravity.CENTER);
             tv.setTextColor(Color.RED);
@@ -169,7 +154,7 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         mLibVLC = new LibVLC(this, args);
 
 
-        Media media = new Media(mLibVLC, Uri.parse(UUrl));
+        Media media = new Media(mLibVLC, Uri.parse(mUrl));
         media.setHWDecoderEnabled(true, true);
         media.addOption(":no-audio");
         media.addOption(":network-caching=150");
@@ -185,10 +170,12 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onEvent(MediaPlayer.Event event) {
 
-                Log.e("wd",event.type+"");
+                Log.e("wev",event.type+"");
                 if (event.type == MediaPlayer.Event.EncounteredError) {
                     Toast.makeText(Main29Activity.this, "网络异常", Toast.LENGTH_SHORT).show();
                 }
+
+
             }
         });
 
@@ -198,12 +185,23 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onRestart() {
         super.onRestart();
-        SurfaceHolder holder = surfaceView.getHolder();
-        holder.setKeepScreenOn(true);
-        vlcVout.setVideoSurface(holder.getSurface(), holder);
-        mMediaPlayer.setAspectRatio(width + ":" + height);
-        vlcVout.attachViews();
-        vlcVout.setWindowSize(width, height);
+
+        if (!vlcVout.areViewsAttached()){
+            SurfaceHolder holder = surfaceView.getHolder();
+            holder.setKeepScreenOn(true);
+            vlcVout.setVideoSurface(holder.getSurface(), holder);
+            if (layoutParams!=null){
+                mMediaPlayer.setAspectRatio(layoutParams.width + ":" + layoutParams.height);
+                vlcVout.setWindowSize(layoutParams.width, layoutParams.height);
+            }else{
+                mMediaPlayer.setAspectRatio(width + ":" + height);
+                vlcVout.setWindowSize(width,height);
+            }
+            vlcVout.attachViews();
+
+        }
+
+
 
     }
 
@@ -256,7 +254,6 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         syView.setOnClickListener(this);
 
 
-
     }
 
 
@@ -281,7 +278,7 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
     @Override
     protected void onResume() {
         super.onResume();
-        if (mMediaPlayer != null)
+        if (mMediaPlayer != null&&!mMediaPlayer.isPlaying())
             mMediaPlayer.play();
 
     }
@@ -347,13 +344,19 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
                 setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
             }
         } else if (i == R.id.sy_view) {
-            int[] location = new int[2];
-            exitfullping_ll.getLocationInWindow(location);
-            int y = location[1];
-            if (y <= -exitfullping_llheight) {
+
+            float y = getvh(exitfullping_ll);
+            if (y <= -(exitfullping_llheight - statusBarHeight)) {
                 showLayoutView();
             }
+
         }
+    }
+
+    private float getvh(View view) {
+        int[] location = new int[2];
+        view.getLocationInWindow(location);
+        return location[1];
     }
 
     private void showLayoutView() {
@@ -396,11 +399,11 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         widthPixels = displayMetrics.widthPixels;
         heightPixels = displayMetrics.heightPixels;
 
-        ViewGroup.LayoutParams layoutParams = surfaceView.getLayoutParams();
+        layoutParams = surfaceView.getLayoutParams();
         layoutParams.width = widthPixels;
         if (fx == Configuration.ORIENTATION_LANDSCAPE) {
             //横屏
-            layoutParams.height = heightPixels;
+            layoutParams.height = heightPixels - statusBarHeight;
         } else if (fx == Configuration.ORIENTATION_PORTRAIT) {
             //竖屏
             layoutParams.height = height;
@@ -412,18 +415,19 @@ public class Main29Activity extends AppCompatActivity implements View.OnClickLis
         vlcVout.setWindowSize(layoutParams.width, layoutParams.height);
 
 
-//        rotateLinearlayout.removeAllViews();
-
-
-//        for (int ww=0;ww<7;ww++){
-//            LinearLayout ho=new LinearLayout(Main29Activity.this);
-//            ho.setOrientation(LinearLayout.HORIZONTAL);
-//            ho.setLayoutParams(new LinearLayout.LayoutParams(layoutParams.width,layoutParams.height/7));
-//            addTv(ho,ww);
-//            rotateLinearlayout.addView(ho);
-//        }
-
     }
 
+    /**
+     * 获取状态栏高度
+     *
+     * @param context
+     * @return
+     */
+    public int getStatusBarHeight(Context context) {
+        Resources resources = context.getResources();
+        int resourceId = resources.getIdentifier("status_bar_height", "dimen", "android");
+        int height = resources.getDimensionPixelSize(resourceId);
+        return height;
+    }
 
 }

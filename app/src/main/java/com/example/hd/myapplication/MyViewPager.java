@@ -6,9 +6,11 @@ import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.util.Log;
+
+import androidx.viewpager.widget.ViewPager;
+
 
 /**
  * Created by dubojian on 2017/9/7.

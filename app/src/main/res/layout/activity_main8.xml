@@ -32,7 +32,6 @@
     </FrameLayout>
 
     <Button
-        android:id="@+id/main8_button"
         android:text="tanchu"
         android:layout_marginTop="20dp"
         android:layout_gravity="right"

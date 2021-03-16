@@ -3,7 +3,6 @@ package com.example.hd.myapplication;
 import android.graphics.Bitmap;
 import android.graphics.Camera;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.WindowManager;
@@ -12,12 +11,15 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.PopupWindow;
 
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.viewpager.widget.PagerAdapter;
+
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class Main8Activity extends AppCompatActivity  {
+public class Main8Activity extends AppCompatActivity {
 
     @BindView(R.id.main8_viewpager)
     public MyViewPager viewPager;
@@ -49,7 +51,7 @@ public class Main8Activity extends AppCompatActivity  {
         pagerlist.add(inflate1);
         pagerlist.add(inflate2);
 
-        viewPager.setAdapter(new MyPagerAdapter(pagerlist));
+        PagerAdapter p=new MyPagerAdapter(pagerlist);
 
         imageView = (ZiDingYiImageView) findViewById(R.id.ImageView);
         linear= (LinearLayout) findViewById(R.id.main8_linear);

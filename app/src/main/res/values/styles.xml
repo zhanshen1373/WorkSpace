@@ -2,26 +2,29 @@
 
     <!-- Base application theme. -->
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!--Theme.AppCompat.Light.NoActionBar-->
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-    </style>
-
-    <style name="MyDialogStyle">
-        <item name="android:windowBackground">@android:color/transparent</item>
-        <item name="android:windowFrame">@null</item>
-        <item name="android:windowNoTitle">true</item>
-        <item name="android:windowIsFloating">true</item>
         <item name="android:windowIsTranslucent">true</item>
-        <item name="android:windowContentOverlay">@null</item>
-        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
-        <item name="android:backgroundDimEnabled">true</item>
     </style>
 
-    <style name="MyAppTheme" parent="android:Theme.Holo.Light.DarkActionBar">
-        <item name="android:windowActionBarOverlay">true</item>
+    <style name="MyAppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="windowActionBarOverlay">true</item>
 
+    </style>
+
+    <style name="myStyle">
+        <item name="attr_str">str in myStyle</item>
+    </style>
+
+    <style name="myDefaultAttr">
+        <item name="attr_str">str in myDefaultAttr</item>
+    </style>
+
+    <style name="myDefaultStyle">
+        <item name="attr_str">str in myDefaultStyle</item>
     </style>
 
 </resources>

@@ -8,14 +8,14 @@
     tools:context="com.example.hd.myapplication.Main6Activity"
     android:orientation="vertical">
 
-  <android.support.v7.widget.Toolbar
+  <androidx.appcompat.widget.Toolbar
       android:id="@+id/toolbar"
       android:layout_width="match_parent"
       android:layout_height="60dp"
       android:background="@color/colorPrimary"
       app:title="首页"
       toolbar:logo="@drawable/shadow_bottom"
-      ></android.support.v7.widget.Toolbar>
+      ></androidx.appcompat.widget.Toolbar>
 
 
   <TimePicker

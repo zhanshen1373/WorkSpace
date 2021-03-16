@@ -4,14 +4,17 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatImageView;
 import android.util.AttributeSet;
+
+
 
 /**
  * Created by dubojian on 2017/9/11.
  */
 
-public class ZiDingYiImageView extends android.support.v7.widget.AppCompatImageView {
+public class ZiDingYiImageView extends AppCompatImageView {
 
     private Paint paint;
     private int process=1;

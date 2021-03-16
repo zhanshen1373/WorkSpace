@@ -11,7 +11,17 @@
         android:layout_height="wrap_content"
         android:hint="hhhh" />
 
+  <Button
+      android:id="@+id/main3_button"
+      android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="dianji"/>
 
+    <Button
+        android:id="@+id/main3_button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="lll"/>
     <RadioGroup
         android:id="@+id/radio"
         android:layout_width="wrap_content"

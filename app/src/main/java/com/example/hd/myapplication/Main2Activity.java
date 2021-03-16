@@ -1,85 +1,96 @@
 package com.example.hd.myapplication;
 
-import android.app.Activity;
-import android.content.Intent;
+import android.graphics.Matrix;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class Main2Activity extends Activity {
+public class Main2Activity extends AppCompatActivity {
 
-    @OnClick(R.id.he)
-    public void trans(){
-        Intent intent=new Intent(this,Main4Activity.class);
-        startActivity(intent);
-    }
-
-    @OnClick(R.id.ha)
-    public void tranp(){
-        finish();
-    }
 
     private ListView list;
-    private ArrayList listdata=new ArrayList();
+    private ArrayList listdata = new ArrayList();
+    private LinShiAdapter adapter;
+    private Matrix matrix;
+    private ImageView headerImage;
+    private float downy;
+    private float movey;
+    private float dy;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
         ButterKnife.bind(this);
-//        getWindow().setEnterTransition(new Slide().setDuration(2000));
-//        getWindow().setExitTransition(new Slide().setDuration(2000));
-
-        list= (ListView) findViewById(R.id.list);
-        for (int i=0;i<3;i++){
-            listdata.add(i+"");
+        list = (ListView) findViewById(R.id.list);
+        for (int i = 0; i < 33; i++) {
+            listdata.add(i + "");
         }
-        list.setAdapter(new BaseAdapter() {
-            @Override
-            public int getCount() {
-                return listdata.size();
-            }
+        matrix = new Matrix();
+        View inflate = getLayoutInflater().inflate(R.layout.headimage, null);
+        headerImage = (ImageView) inflate.findViewById(R.id.headerimage);
+        headerImage.setScaleType(ImageView.ScaleType.FIT_XY);
+//        matrix.postScale()
+//        LinearLayout.LayoutParams layoutParams=new LinearLayout.LayoutParams();
+        list.addHeaderView(inflate);
+
+        adapter = new LinShiAdapter(this, listdata);
+
+        list.setAdapter(adapter);
+
+        list.setOnTouchListener(new View.OnTouchListener() {
 
             @Override
-            public Object getItem(int position) {
-                return listdata.get(position);
-            }
+            public boolean onTouch(View v, MotionEvent event) {
+                switch (event.getAction()) {
+                    case MotionEvent.ACTION_DOWN:
+                        downy = event.getRawY();
+                        break;
+                    case MotionEvent.ACTION_MOVE:
+                        movey = event.getRawY();
+                        dy = movey - downy;
+                        if (dy > 0) {
+//                            dy+headerImage.getHeight()
+//                            LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
+//
+//                            );
+                        }
+                        break;
+                    case MotionEvent.ACTION_UP:
 
-            @Override
-            public long getItemId(int position) {
-                return position;
-            }
+                        break;
 
-            @Override
-            public View getView(int position, View convertView, ViewGroup parent) {
+                    default:
 
-                ViewHold vh=null;
-                if(convertView==null){
-                    vh=new ViewHold();
-                    convertView=View.inflate(Main2Activity.this
-                            ,R.layout.xx,null);
-                    vh.textView= (TextView) convertView.findViewById(R.id.xx_text);
-                    convertView.setTag(vh);
-                }else{
-                    vh= (ViewHold) convertView.getTag();
+                        break;
                 }
-                    vh.textView.setText((CharSequence) listdata.get(position));
-                return convertView;
+
+                return false;
+            }
+        });
+
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                TextView tt = (TextView) view.findViewById(R.id.xx_text);
+                if (tt.getText().equals("1"))
+                    Toast.makeText(Main2Activity.this, position + "\t" + id, Toast.LENGTH_LONG).show();
             }
         });
     }
 
-    static class ViewHold{
-        TextView textView;
 
-    }
 
 }

@@ -143,8 +143,8 @@ public class ZiDingYiGridView extends GridView implements AdapterView.OnItemLong
 //                }
                 View view=getChildAt(centerPosition);
                 view.setVisibility(VISIBLE);
-//                MyGridViewAdapter adapter = (MyGridViewAdapter) getAdapter();
-//                adapter.notifyDataSetChanged();
+                MyGridViewAdapter adapter = (MyGridViewAdapter) getAdapter();
+                adapter.notifyDataSetChanged();
                 break;
             default:
 
@@ -177,16 +177,16 @@ public class ZiDingYiGridView extends GridView implements AdapterView.OnItemLong
     private void onSwapItem() {
         List<Animator> list = new ArrayList<Animator>();
         View mainView=getChildAt(centerPosition);
-//        Log.e("l",mainView.getX()+"..."+mainView.getY());
         tempPosition = pointToPosition((int) move_x, (int) move_y);
         if (tempPosition != AbsListView.INVALID_POSITION) {
+            endAnimator(mainView,0,((tempPosition%3)-(centerPosition%3))*mainView.getWidth(),
+                    0,((tempPosition/3)-(centerPosition/3))*mainView.getHeight());
             //点击的位置小于到达的位置
             if (clickPosition < tempPosition) {
                 for (int i = clickPosition; i < tempPosition; i++) {
                     View view = getChildAt(i + 1);
                     //每一项自己的移动
                     if ((i + 1) % 3 != 0) {
-                        endAnimator(mainView,(int) mainView.getX(),(int) move_x,(int) mainView.getY(),(int) move_y);
                         list.add(createAnimator(view, 0, -view.getWidth(), 0, 0));
                     } else {
                         list.add(createAnimator(view, 0, 2 * (view.getWidth()), 0, -view.getHeight()));

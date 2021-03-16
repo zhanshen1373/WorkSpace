@@ -1,11 +1,11 @@
 package com.example.hd.myapplication;
 
-import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.IdRes;
+import androidx.annotation.IdRes;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,29 +19,28 @@ import android.widget.RadioGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 
-public class Main4Activity extends Activity {
 
-    @BindView(R.id.mmp)
+
+public class Main4Activity extends AppCompatActivity {
+
+//    @BindView(R.id.mmp)
     public ListView listView;
 
-    @OnClick(R.id.mmp_button3)
+//    @OnClick(R.id.mmp_button3)
     public void transform(){
         Intent intent=new Intent(this,Main3Activity.class);
         startActivity(intent);
     }
 
-    @OnClick(R.id.mmp_button5)
+//    @OnClick(R.id.mmp_button5)
     public void trans(){
         Intent intent=new Intent(this,Main2Activity.class);
         startActivity(intent);
     }
 
 
-    @BindView(R.id.mmp_button5)
+//    @BindView(R.id.mmp_button5)
     public Button button5;
 
     private ArrayList<String> list;
@@ -49,8 +48,9 @@ public class Main4Activity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+//        ButterKnife.bind(this);
         setContentView(R.layout.activity_main4);
-        ButterKnife.bind(this);
+        listView= (ListView) findViewById(R.id.mmp);
 
         ActivityManager am = (ActivityManager)getSystemService(Context.ACTIVITY_SERVICE);
         List<ActivityManager.RunningTaskInfo> runningTaskInfoList = am.getRunningTasks(10);
@@ -64,7 +64,12 @@ public class Main4Activity extends Activity {
 
 
         list=new ArrayList<>();
+        for (int i=0;i<10;i++){
+            list.add("nihao"+i);
+        }
         list.add("hello");
+        list.add("name");
+
         adapter=new MyAdapter();
 
 

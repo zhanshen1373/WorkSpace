@@ -7,11 +7,11 @@
     android:orientation="vertical"
     tools:context="com.example.hd.myapplication.MainActivity">
 
-    <android.support.v4.view.ViewPager
+    <androidx.viewpager.widget.ViewPager
         android:id="@+id/viewpager"
         android:layout_weight="1"
         android:layout_width="match_parent"
-        android:layout_height="0dp"></android.support.v4.view.ViewPager>
+        android:layout_height="0dp"></androidx.viewpager.widget.ViewPager>
 
     <android.support.design.widget.TabLayout
         android:id="@+id/tablayout"

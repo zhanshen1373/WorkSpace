@@ -1,7 +1,7 @@
 package com.example.hd.myapplication;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -13,7 +13,8 @@ import java.util.ArrayList;
 public class SecondActivity extends AppCompatActivity {
 
     private ListView listview;
-    private static ArrayList<String> arrayList=new ArrayList<>();
+    private static ArrayList<String> arrayList = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -21,7 +22,7 @@ public class SecondActivity extends AppCompatActivity {
 
         initData();
 
-        listview= (ListView) findViewById(R.id.listview);
+        listview = (ListView) findViewById(R.id.listview);
         listview.setAdapter(new BaseAdapter() {
             @Override
             public int getCount() {
@@ -41,38 +42,38 @@ public class SecondActivity extends AppCompatActivity {
             @Override
             public View getView(int position, View convertView, ViewGroup parent) {
 
-                ViewHold viewHold=null;
-               if(convertView==null){
-                   viewHold=new ViewHold();
-                   convertView=View.inflate(SecondActivity.this,R.layout.zdyview,null);
-                   viewHold.textView= (TextView) convertView.findViewById(R.id.textview);
-                   convertView.setTag(viewHold);
-               }else{
-                   viewHold = (ViewHold) convertView.getTag();
-               }
-               if(arrayList.get(position).equals("w")){
-                   arrayList.remove(position);
-                   notifyDataSetChanged();
-               }
-               viewHold.textView.setText(arrayList.get(position));
+                ViewHold viewHold = null;
+                if (convertView == null) {
+                    viewHold = new ViewHold();
+                    convertView = View.inflate(SecondActivity.this, R.layout.zdyview, null);
+                    viewHold.textView = (TextView) convertView.findViewById(R.id.textview);
+                    convertView.setTag(viewHold);
+                } else {
+                    viewHold = (ViewHold) convertView.getTag();
+                }
+                if (arrayList.get(position).equals("w")) {
+                    arrayList.remove(position);
+                    notifyDataSetChanged();
+                }
+                viewHold.textView.setText(arrayList.get(position));
                 return convertView;
             }
         });
     }
 
     private void initData() {
-        for (int i=0;i<3;i++){
-            if(i==1){
+        for (int i = 0; i < 3; i++) {
+            if (i == 1) {
                 arrayList.add("w");
-            }else{
-                arrayList.add("hello"+i);
+            } else {
+                arrayList.add("hello" + i);
             }
 
         }
 
     }
 
-    static class ViewHold{
+    static class ViewHold {
         TextView textView;
     }
 }
