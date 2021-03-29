@@ -48,7 +48,7 @@ public class zdytv extends AppCompatTextView {
                 break;
 
         }
-        return super.onTouchEvent(event);
+        return true;
     }
 
     @Override

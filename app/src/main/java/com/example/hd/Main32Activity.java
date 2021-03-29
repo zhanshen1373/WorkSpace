@@ -1,22 +1,28 @@
 package com.example.hd;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MotionEvent;
+import android.view.View;
 
 import com.example.hd.myapplication.R;
 import com.example.hd.myapplication.SimpleFragment;
 
 import java.util.EnumMap;
 
+import p.vv;
+
 public class Main32Activity extends AppCompatActivity {
 
     private static final String TAG = "SimpleFragment";
     private SimpleFragment fragment;
     private Toolbar toolbar;
+
+    private String args="bew";
 
 
     @Override
@@ -25,9 +31,19 @@ public class Main32Activity extends AppCompatActivity {
         setContentView(R.layout.activity_main32);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
 
+        args=TAG;
+
         setSupportActionBar(toolbar);
 //        main();
 
+        new Thread(){
+          public   int t=1;
+            @Override
+            public void run() {
+                super.run();
+
+            }
+        }.start();
 
 
         /*
@@ -82,6 +98,18 @@ public class Main32Activity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("wev","onStart");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("wev","onStop");
+    }
+
     public void main() {
 
         a[] values = a.values();
@@ -96,12 +124,6 @@ public class Main32Activity extends AppCompatActivity {
     }
 
 
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.e("xx", "stop");
-
-    }
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent ev) {

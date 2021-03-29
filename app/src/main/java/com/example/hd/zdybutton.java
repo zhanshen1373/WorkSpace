@@ -63,17 +63,18 @@ public class zdybutton extends LinearLayout {
 
             case MotionEvent.ACTION_DOWN:
                 Log.e("tag", "viewgruop-ontouchevent-down");
-                break;
+                return false;
+//                break;
 
 //                return true;
             case MotionEvent.ACTION_MOVE:
                 Log.e("tag", "viewgruop-ontouchevent-move");
-
-                break;
+                return false;
+//                break;
             case MotionEvent.ACTION_UP:
                 Log.e("tag", "viewgruop-ontouchevent-up");
-
-                break;
+return super.onTouchEvent(event);
+//                break;
             case MotionEvent.ACTION_CANCEL:
                 Log.e("tag", "viewgruop-ontouchevent-cancel");
 
@@ -82,7 +83,8 @@ public class zdybutton extends LinearLayout {
                 break;
 
         }
-        return false;
+        Log.e("tag","jigu");
+        return true;
     }
 
     @Override
@@ -103,8 +105,8 @@ public class zdybutton extends LinearLayout {
             case MotionEvent.ACTION_MOVE:
                 Log.e("tag", "viewgruop-onInterceptTouchEvent-move");
 
-//                return true;
-                break;
+                return true;
+//                break;
             case MotionEvent.ACTION_UP:
                 Log.e("tag", "viewgruop-onInterceptTouchEvent-up");
 
@@ -117,6 +119,6 @@ public class zdybutton extends LinearLayout {
                 break;
 
         }
-        return true;
+        return false;
     }
 }
