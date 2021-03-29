@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:icon="@drawable/hd_hse_nav_model_cc"
+        android:title="测试1"/>
+
+
+    <item
+        android:icon="@drawable/draw"
+        android:title="测试2"/>
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="测试3"></item>
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="测试4"></item>
+
+    <item
+        android:icon="@mipmap/ic_launcher"
+        android:title="测试5"></item>
+
+</menu>

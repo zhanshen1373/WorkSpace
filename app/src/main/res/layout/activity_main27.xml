@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hd.bottomnavigationview.Main27Activity">
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="bbb"
+        android:onClick="o"/>
+
+    <com.example.hd.table.Zdyview
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/myStyle"
+        app:attr_str="name"></com.example.hd.table.Zdyview>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomnavigationview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottomnavigationview"
+        app:itemTextColor="@android:color/black"
+        app:itemBackground="@android:color/holo_red_dark"
+        app:itemIconTint="@android:color/darker_gray"
+
+
+
+        ></com.google.android.material.bottomnavigation.BottomNavigationView>
+
+
+
+</RelativeLayout>
+

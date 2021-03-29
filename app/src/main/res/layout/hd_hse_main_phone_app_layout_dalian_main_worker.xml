@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+
+    <androidx.core.widget.SwipeRefreshLayout
+        android:id="@+id/worker_swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginTop="50dp">
+
+
+            <ExpandableListView
+                android:id="@+id/worker_expand"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                ></ExpandableListView>
+    </androidx.core.widget.SwipeRefreshLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/worker_pz_notice_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="票证到期提醒" />
+
+                <ListView
+                    android:id="@+id/worker_pz_notice_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"></ListView>
+
+                <TextView
+                    android:id="@+id/worker_gasdetect_notice_textview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="气体检测提醒" />
+
+                <ListView
+                    android:id="@+id/worker_gasdetect_notice_listview"
+                    android:layout_width="match_parent"
+                    android:layout_height="100dp"></ListView>
+
+            </LinearLayout>
+
+
+</LinearLayout>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <TextView
+        android:id="@+id/tv_gasstatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="@android:color/holo_red_light"
+        android:text="关注"
+        android:textColor="@android:color/white" />
+
+    <TextView
+        android:id="@+id/tv_gascontent"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="催化烟气脱硫1层区域3项作业" />
+
+    <TextView
+        android:id="@+id/tv_gasdistance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:text="已过期" />
+
+
+    <TextView
+        android:id="@+id/time_gasminute"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_blue_dark"
+        android:text="58" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=":" />
+
+    <TextView
+        android:id="@+id/time_gassecond"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="5dp"
+        android:background="@android:color/holo_blue_dark"
+        android:text="20" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="保存" />
+
+
+</LinearLayout>
+
+
+
+
+
+

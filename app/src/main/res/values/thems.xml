@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="attr_ref">@style/myDefaultAttr</item>
+    </style>
+
+    <!--<style name="myTheme" parent="Theme.AppCompat.Light.DarkActionBar">-->
+        <!--<item name="attr_str">str in myTheme</item>-->
+    <!--</style>-->
+</resources>
