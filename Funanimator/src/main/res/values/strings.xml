@@ -1,9 +1,0 @@
-<resources>
-    <string name="app_name">FunAnimator</string>
-
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-    <string name="name"><b>姓名： </b>钟光燕</string>
-    <string name="education"><b>文化程度： </b>小学毕业</string>
-    <string name="blog"><b>博客地址： </b>http://blog.csdn.net/jxxfzgy</string>
-</resources>
